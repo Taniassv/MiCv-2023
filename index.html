@@ -125,7 +125,7 @@
 			    document.getElementById("imagen").appendChild(imag); 
 			}
             
-            function datas()
+            function datas0()
 			{
 				$.ajax({
 				  url: 'https://randomuser.me/api/',
@@ -137,6 +137,17 @@
 				  }
 				});					
 			};
+
+			function datas()
+			{
+				const url = 'https://randomuser.me/api/';
+				fetch(url)
+				.then(data => {return data.json()})
+				.then(res => {
+					console.log(res);
+					show(res);
+				});
+			}
 			
 		</script>
 	</body>
