@@ -1,0 +1,22 @@
+h1
+{
+	text-align: center;
+	color: #084A83;
+}
+
+img {
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+  padding: 30px 20px;
+}
+
+*{
+	font-family: 'Londrina Shadow', cursive;
+	font-family: 'Poller One', cursive;
+	color: #084A83;
+}
+
+body{
+	background-color: #ECF2FF;
+}

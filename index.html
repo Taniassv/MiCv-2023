@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Curriculum Vitae de Tania Vargas</title>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Poller+One&display=swap" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1 id="">Curriculum Vitae de <strong id="title"></strong></h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center" id="imagen">
+				</div>
+				<div class="col-6">
+					<h2><strong>Datos Personales</strong></h2>
+					<ul>
+						<li> Nombre:  <strong id="name"></strong></li>
+						<li> Edad:  <strong id="age"></strong></li>
+						<li> Genero:  <strong id="gener"></strong></li>
+						<li> Email:  <strong id="email"></strong></li>
+						<li> Teléfono:  <strong id="phone"></strong></li>
+					</ul>	
+				</div>
+				
+				<div class="col-6">
+					<h2><strong>Formación Académica</strong></h2>
+					<ul>
+						<li>2007-2014: <strong>Universidad Tecnologica Nacional - Facultad Regional Tucumán</strong></li>
+					</ul>	
+				</div>
+				
+				<div class="col-6">
+	                <h2><strong>Experiencia Profesional</strong></h2>
+	                <ul>
+	                    <li>2019-2023: <strong>Dressone S.A.</strong></li>
+	                </ul>	
+	            </div>
+	            <div class="col-6">
+	                <h2><strong>Habilidades</strong></h2>
+	                <ul id="hab"></ul>	
+	            </div>
+	            <div class="col-6">
+	                <h2><strong>Tecnologías</strong></h2>
+	                <ul id="tec"></ul>	
+	            </div>
+	            <div class="col-6">
+	                <h2><strong>Social</strong></h2>
+	                <ul id="soc"></ul>	
+	            </div>
+	            <div class="col-6">
+	                <h2><strong>Idiomas</strong></h2>
+	                <ul id="language"></ul>	
+	            </div>
+			</div>
+		</div>
+		<script>
+
+			var languages = arrayLanguages();
+
+			function arrayLanguages()
+			{
+				var lang = ["Ingles", "Español"];
+				for(i=0; i< lang.length; i++)
+				{
+					var node = document.createElement('li');
+					node.appendChild(document.createTextNode(lang[i]));
+					document.getElementById("language").appendChild(node);	
+				}
+			}
+
+			var social = arraySocial();
+
+			function arraySocial()
+			{
+				var soc = ["LinkedIn", "Skype", "GitHub"];
+				for(var i=0; i<soc.length; i++)
+				{
+					var node = document.createElement('li');
+					node.appendChild(document.createTextNode(soc[i]));
+					document.getElementById("soc").appendChild(node);
+				}
+			}
+
+			var tecnologias = arrayTecnologias();
+
+			function arrayTecnologias() {
+				var tecno = ["HTML", "CSS", "JAVASCRIPT", "GIT", "BOOTSTRAP"];
+				for (var i = 0; i < tecno.length; i++) {
+					var node = document.createElement('li');
+					node.appendChild(document.createTextNode(tecno[i]));
+					document.getElementById("tec").appendChild(node);
+				}
+			}
+
+			var habilities = arrayHabilities();
+			
+			function arrayHabilities()
+			{
+				var array = ["Responsable", "Proactividad", "Trabajo en Equipo", "Adaptabilidad", "Constancia"];
+				for (var i = 0; i < array.length; i++) {
+					  var node = document.createElement('li');
+					  node.appendChild(document.createTextNode(array[i]));
+					  document.getElementById("hab").appendChild(node);
+					}
+			}
+
+			var data = datas();
+			
+            function show(data) {
+				document.getElementById("title").innerHTML = data.results[0].name.first;
+			    document.getElementById("name").innerHTML = data.results[0].name.last + " " + data.results[0].name.first;
+			    document.getElementById("age").innerHTML = data.results[0].dob.age;
+			    document.getElementById("gener").innerHTML = data.results[0].gender;
+			    document.getElementById("email").innerHTML = data.results[0].email;
+			    document.getElementById("phone").innerHTML = data.results[0].phone;
+			   
+			    var imag = document.createElement('img');
+			    imag.src = data.results[0].picture.large;
+			    document.getElementById("imagen").appendChild(imag); 
+			}
+            
+            function datas()
+			{
+				$.ajax({
+				  url: 'https://randomuser.me/api/',
+				  dataType: 'json',
+				  success: function(data) {
+				    console.log(data);
+					console.log(data.results[0].name.first);				   
+				    show(data);
+				  }
+				});					
+			};
+			
+		</script>
+	</body>
+</html>
