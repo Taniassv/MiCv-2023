@@ -1,7 +1,12 @@
+.espacio{
+	padding: 3%;
+
+}
+
 h1
 {
 	text-align: center;
-	color: #084A83;
+	color: #3cd1ef;
 }
 
 img {
@@ -14,9 +19,9 @@ img {
 *{
 	font-family: 'Londrina Shadow', cursive;
 	font-family: 'Poller One', cursive;
-	color: #084A83;
+	color: #3cd1ef;
 }
 
 body{
-	background-color: #ECF2FF;
+	background-color: #3f2f59;
 }
